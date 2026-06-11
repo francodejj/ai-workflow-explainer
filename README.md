@@ -20,7 +20,7 @@ This project showcases:
 - A simple, production-ready artifact  
 
 ## 🚀 Live Demo
-(Your GitHub Pages link goes here)
+https://francodejj.github.io/ai-workflow-explainer/
 
 ## 📂 Files
 - `index.html` — The full application  
