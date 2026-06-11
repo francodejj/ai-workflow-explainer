@@ -23,13 +23,13 @@
         <div id="output"></div>
     </div>
 
-    <script>
-        async function run() {
-            const userInput = document.getElementById("input").value;
-            const output = document.getElementById("output");
-            output.innerHTML = "Analyzing workflow...";
+<script>
+    async function run() {
+        const userInput = document.getElementById("input").value;
+        const output = document.getElementById("output");
+        output.innerHTML = "Analyzing workflow...";
 
-            const prompt = `
+        const prompt = `
 You are an AI workflow analyst. The user provided this process: "${userInput}"
 
 1. Restate the process clearly.
@@ -41,19 +41,15 @@ You are an AI workflow analyst. The user provided this process: "${userInput}"
 Return the answer in clean, readable sections.
 `;
 
-            const response = await fetch("https://api.aiproxy.io/api/generate", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    model: "gpt-4o-mini",
-                    prompt: prompt,
-                    max_tokens: 600
-                })
-            });
+        const response = await fetch("https://workflow-explainer.francodejj.workers.dev/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prompt })
+        });
 
-            const data = await response.json();
-            output.innerHTML = data.text || "No response received.";
-        }
-    </script>
+        const data = await response.json();
+        output.innerHTML = data.text || "No response received.";
+    }
+</script>
 </body>
 </html>
